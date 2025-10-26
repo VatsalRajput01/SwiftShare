@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 
 // --- CONSTANTS ---
 const SALT_ROUNDS = 10;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 // Path to the JSON file storing file metadata
 const DATA_FILE = path.join(__dirname, 'file_metadata.json');
 
