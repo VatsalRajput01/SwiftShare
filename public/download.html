@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SwiftShare | Download File</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html" class="home-btn">Home</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-toggle">
+                <input type="checkbox" id="themeSwitch" />
+                <label for="themeSwitch" class="toggle-label"><span class="ball"></span></label>
+                <p id="themeText">Turn On Light Mode</p>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="upload-section">
+            <div class="download-container">
+                <h2>Download Your File</h2>
+                <p>Enter the unique 8-character code below to start the download.</p>
+
+                <form id="downloadForm" autocomplete="off">
+                    <label class="input-label" for="code-1">Enter 8-Character File Code</label>
+
+                    <div class="code-input-group">
+                        <input type="text" id="code-1" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <span class="code-dash">-</span>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                        <input type="text" class="code-input" maxlength="1" inputmode="text" required>
+                    </div>
+
+                    <input type="hidden" id="downloadCode" name="code">
+
+                    <div id="passwordField">
+                        <label class="input-label" for="downloadPassword">File is Password Protected</label>
+                        <input type="password" id="downloadPassword" name="password" placeholder="Enter password" />
+                    </div>
+
+                    <div class="upload-action">
+                        <button type="submit" id="downloadBtn" class="btn primary-btn">
+                            Get File
+                        </button>
+                    </div>
+                </form>
+
+                <div id="downloadMessage" class="upload-message" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="howto.html">How to Use</a>
+            <a href="about.html">About</a>
+            <a href="developer.html">Developer</a>
+            <a href="security.html">Security</a>
+        </div>
+        <p>© 2025 SwiftShare. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/main.js"></script>
+
+</body>
+
+</html>

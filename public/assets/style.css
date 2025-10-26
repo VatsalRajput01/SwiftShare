@@ -1,0 +1,1153 @@
+/* assets/style.css - SwiftShare (Full Update v21 - !important fix) */
+
+/* ---------------------------
+ * Fonts + Base + Variables
+ * --------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@600&display=swap");
+
+:root {
+  --bg-dark-1: #0f172a;
+  --bg-dark-2: #1e293b;
+  --panel: rgba(30, 41, 59, 0.7);
+  --accent: #38bdf8;
+  --accent-2: #0ea5e9;
+  --muted: #94a3b8;
+  --text-light: #f1f5f9;
+  --text-strong: #f9fafb;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 16px 50px rgba(0, 0, 0, 0.4);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --focus-glow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+  --light-bg-1: #f8fafc;
+  --light-bg-2: #eef2f7;
+  --light-text-primary: #111827;
+  --light-text-muted: #4b5563;
+  --light-panel: #ffffff;
+  --light-input-bg: #f9fafb;
+  --light-input-border: #d1d5db;
+  --light-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  --strong-muted-text: #cdd6e3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  /* Dark Mode Gradient Background */
+  background: linear-gradient(145deg, var(--bg-dark-1), var(--bg-dark-2) 70%);
+  color: var(--text-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background .3s ease, color .3s ease;
+  overflow-x: hidden;
+}
+
+body.light {
+  /* Light Mode Gradient Background */
+  background: linear-gradient(145deg, var(--light-bg-1), var(--light-bg-2) 70%);
+  color: var(--light-text-primary);
+}
+
+/* --------------------------- * NAVBAR * --------------------------- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  gap: 20px;
+  backdrop-filter: blur(10px);
+  /* Semi-transparent dark background */
+  background: rgba(11, 17, 32, 0.8);
+  z-index: 120;
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.light nav {
+  /* Semi-transparent light background */
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.6rem, 4vw, 1.9rem);
+  line-height: 1;
+  /* Gradient text color */
+  background: linear-gradient(90deg, var(--accent), #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.02rem;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: background .18s ease, transform .15s ease;
+}
+
+.home-btn:hover {
+  background: rgba(56, 189, 248, 0.04);
+  transform: translateY(-2px);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label {
+  width: 50px;
+  height: 26px;
+  border-radius: 999px;
+  background: #475569;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+body.light .toggle-label {
+  background: var(--light-input-border);
+}
+
+.toggle-label .ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#themeSwitch {
+  display: none;
+}
+
+#themeSwitch:checked+.toggle-label {
+  background: var(--accent);
+}
+
+/* Move the ball for light mode */
+#themeSwitch:checked+.toggle-label .ball {
+  transform: translateX(24px);
+}
+
+#themeText {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+}
+
+body.light #themeText {
+  color: var(--light-text-muted);
+}
+
+/* Main Content Area */
+main {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero,
+.upload-section {
+  width: 100%;
+  padding: 120px 32px 80px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* --------------------------- * HERO * --------------------------- */
+.hero-content {
+  max-width: 760px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  /* Gradient text color */
+  background: linear-gradient(90deg, #60a5fa, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 720px;
+  margin: 14px auto 30px;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+body.light .hero p {
+  color: var(--light-text-muted);
+}
+
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------- * Buttons * --------------------------- */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all .2s ease;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.primary-btn {
+  background: linear-gradient(95deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 30px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.3);
+}
+
+.secondary-btn:hover {
+  background-color: rgba(56, 189, 248, 0.05);
+  box-shadow: none;
+}
+
+.btn:active {
+  transform: translateY(0px);
+  filter: brightness(0.95);
+}
+
+.upload-action {
+  margin-top: 25px;
+}
+
+/* Styling for the main action buttons (Upload/Download) */
+#uploadBtn,
+#downloadBtn {
+  max-width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+/* --------------------------- * UPLOAD PAGE * --------------------------- */
+.upload-container {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  /* Semi-transparent panel background */
+  background: var(--panel);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+}
+
+body.light .upload-container {
+  background: var(--light-panel);
+  box-shadow: var(--light-card-shadow);
+}
+
+.upload-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.upload-left h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  /* Gradient text color */
+  background: linear-gradient(90deg, #60a5fa, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.upload-left>p {
+  text-align: center;
+  margin: 0 auto 15px auto;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+body.light .upload-left>p {
+  color: #374151;
+}
+
+.drop-zone {
+  border: 2px dashed var(--muted);
+  border-radius: var(--radius-md);
+  padding: 40px 25px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* Hide native file input element */
+.drop-zone input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.drop-zone p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--strong-muted-text);
+  z-index: 1;
+}
+
+.drop-zone strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Hover/Drag Over effects for the drop zone */
+.drop-zone:hover,
+.drop-zone.dragover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+/* Container for expiry/password options */
+#extraOptions {
+  display: none;
+  margin-top: 25px;
+  gap: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 25px;
+}
+
+body.light #extraOptions {
+  border-top-color: var(--light-input-border);
+}
+
+.field-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  margin-top: 15px;
+}
+
+.field-row>div {
+  flex: 1;
+}
+
+.input-label {
+  display: block;
+  font-weight: 600;
+  color: var(--strong-muted-text);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+body.light .input-label {
+  color: var(--light-text-muted);
+}
+
+/* Default styling for input fields (may conflict with specialized styles like 8-box) */
+input[type="password"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-light);
+  outline: none;
+  transition: border .2s ease, box-shadow .2s ease;
+  font-size: 0.95rem;
+}
+
+body.light input[type="password"],
+body.light select,
+body.light input[type="text"] {
+  background: var(--light-input-bg);
+  color: var(--light-text-primary);
+  border-color: var(--light-input-border);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: var(--focus-glow);
+}
+
+/* Custom styling for select dropdown */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  /* Dark mode dropdown arrow (SVG data URI) */
+  background: var(--bg-dark-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E") no-repeat right 15px center;
+  background-size: 1.1em 1.1em;
+  padding-right: 40px;
+}
+
+body.light select {
+  /* Light mode dropdown arrow (SVG data URI) */
+  background: var(--light-input-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%234b5563'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E") no-repeat right 15px center;
+  background-size: 1.1em 1.1em;
+}
+
+select option {
+  background: var(--bg-dark-2);
+  color: var(--text-light);
+}
+
+body.light select option {
+  background: #ffffff;
+  color: var(--light-text-primary);
+}
+
+.upload-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+.upload-right h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  color: var(--text-strong);
+}
+
+body.light .upload-right h3 {
+  color: var(--light-text-primary);
+}
+
+.upload-right p {
+  color: var(--strong-muted-text);
+  line-height: 1.7;
+  text-align: left;
+}
+
+.upload-right ul {
+  list-style: none;
+  padding-left: 0;
+  color: var(--strong-muted-text);
+  margin-top: 20px;
+}
+
+.upload-right li {
+  padding-left: 28px;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+/* Custom list bullet (check mark) */
+.upload-right li::before {
+  content: '✓';
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+body.light .upload-right p,
+body.light .upload-right ul {
+  color: #374151;
+}
+
+/* --------------------------- * DOWNLOAD PAGE STYLES * --------------------------- */
+.download-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 550px;
+  background: var(--panel);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+body.light .download-container {
+  background: var(--light-panel);
+  box-shadow: var(--light-card-shadow);
+}
+
+.download-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  /* Gradient text color */
+  background: linear-gradient(90deg, #60a5fa, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.download-container p {
+  text-align: center;
+  margin: 0 auto 15px auto;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+body.light .download-container p {
+  color: #374151;
+}
+
+#downloadForm {
+  margin-top: 40px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#downloadForm .input-label {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+#passwordField {
+  display: none;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* 8-Box Input Styles - Using !important to override generic input styles */
+.code-input-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.code-input {
+  /* Dimensions - FORCE-FIX using !important for specific height/padding */
+  width: 46px;
+  height: 56px !important;
+  padding: 0 !important;
+  line-height: 56px !important;
+
+  /* Text Styling - FORCE-FIX using !important for font size/color */
+  font-size: 1.6rem !important;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-light) !important;
+
+  /* Appearance */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.03);
+  outline: none;
+  transition: border .2s ease, box-shadow .2s ease;
+  text-transform: uppercase;
+  -moz-appearance: textfield;
+  /* Remove number arrows in Firefox */
+}
+
+/* Remove number arrows in Webkit browsers */
+.code-input::-webkit-outer-spin-button,
+.code-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.code-input:focus {
+  border-color: var(--accent);
+  box-shadow: var(--focus-glow);
+}
+
+.code-dash {
+  font-size: 1.6rem;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0 4px;
+  line-height: 56px;
+}
+
+body.light .code-input {
+  background: var(--light-input-bg);
+  /* Light mode color FORCE-FIX */
+  color: var(--light-text-primary) !important;
+  border-color: var(--light-input-border);
+}
+
+/* Hidden input field for the combined code */
+#downloadCode {
+  display: none;
+}
+
+/* ---------------------------
+ * INFO PAGE STYLES (How to Use, About, etc.)
+ * --------------------------- */
+.info-section {
+  width: 100%;
+  padding: 120px 32px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.info-page-container {
+  width: 100%;
+  max-width: 900px;
+  background: var(--panel);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+}
+
+body.light .info-page-container {
+  background: var(--light-panel);
+  box-shadow: var(--light-card-shadow);
+}
+
+.info-page-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  /* Gradient text color */
+  background: linear-gradient(90deg, #60a5fa, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.info-page-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+.info-page-container p,
+.info-page-container ul,
+.info-page-container ol {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.info-page-container li {
+  margin-bottom: 10px;
+}
+
+.info-page-container strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* --- Light Mode styles for Info Page --- */
+body.light .info-page-container h2 {
+  color: var(--light-text-primary);
+}
+
+body.light .info-page-container p,
+body.light .info-page-container ul,
+body.light .info-page-container ol {
+  color: var(--light-text-muted);
+}
+
+/* --------------------------- * FOOTER * --------------------------- */
+footer {
+  text-align: center;
+  padding: 25px 18px;
+  font-size: 0.9rem;
+  margin-top: auto;
+  color: var(--strong-muted-text);
+  background: var(--bg-dark-1);
+  border-top: 1px solid var(--border-color);
+}
+
+body.light footer {
+  color: var(--light-text-muted);
+  background: var(--light-bg-2);
+  border-top: 1px solid var(--light-input-border);
+}
+
+.footer-links {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--strong-muted-text);
+  text-decoration: none;
+  margin: 0;
+  font-weight: 500;
+  transition: color 0.18s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* Separator between footer links */
+.footer-links a:not(:last-child)::after {
+  content: '|';
+  color: var(--muted);
+  margin-left: 14px;
+  pointer-events: none;
+}
+
+body.light .footer-links a {
+  color: var(--light-text-muted);
+}
+
+body.light .footer-links a:hover {
+  color: var(--accent-2);
+}
+
+body.light .footer-links a:not(:last-child)::after {
+  color: var(--light-text-muted);
+}
+
+/* --------------------------- * RESPONSIVE RULES * --------------------------- */
+@media (max-width:1024px) {
+
+  /* Tablet and smaller breakpoint */
+  .upload-container {
+    /* Stack columns vertically */
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .upload-left {
+    order: 1;
+  }
+
+  .upload-right {
+    order: 2;
+    text-align: center;
+  }
+
+  /* Center list items and text in the right panel on smaller screens */
+  .upload-right p,
+  .upload-right ul {
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  /* Remove custom checkmark bullet for simplified mobile layout */
+  .upload-right li {
+    padding-left: 0;
+    list-style: disc;
+    /* Fallback to standard bullet */
+    margin-left: 20px;
+  }
+
+  .upload-right li::before {
+    display: none;
+  }
+}
+
+@media (max-width:768px) {
+
+  /* Mobile breakpoint */
+  nav {
+    padding: 10px 15px;
+    height: 68px;
+  }
+
+  .page-content {
+    padding-top: 80px;
+  }
+
+  .hero h1,
+  .upload-left h2 {
+    font-size: 2rem;
+  }
+
+  .hero,
+  .upload-section {
+    padding: 80px 20px 60px;
+  }
+
+  .upload-container {
+    padding: 25px;
+    gap: 25px;
+  }
+
+  .download-container {
+    padding: 25px;
+  }
+
+  /* Hide theme text to save space on mobile */
+  #themeText {
+    display: none;
+  }
+}
+
+@media (max-width:480px) {
+
+  /* Small Mobile breakpoint */
+  .hero h1,
+  .upload-left h2,
+  .download-container h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Stack option fields vertically */
+  .field-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .field-row>div {
+    width: 100%;
+  }
+
+  #downloadForm {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .download-container #downloadForm .input-label {
+    text-align: center;
+  }
+
+  .code-input-group {
+    justify-content: center;
+    gap: 5px;
+  }
+
+  #passwordField {
+    text-align: center;
+  }
+
+  /* Mobile 8-box Input Styles - Smaller dimensions using !important FORCE-FIX */
+  .code-input {
+    width: 36px;
+    height: 48px !important;
+    font-size: 1.4rem !important;
+    line-height: 48px !important;
+    padding: 0 !important;
+  }
+
+  .code-dash {
+    font-size: 1.4rem;
+    line-height: 48px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 20px 10px;
+  }
+}
+
+/* --------------------------- * MODAL, PROGRESS & MESSAGES * --------------------------- */
+/* Success Modal container overlay */
+.upload-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 17, 32, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.upload-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-inner {
+  width: 92%;
+  max-width: 460px;
+  background: linear-gradient(180deg, #1e293b, #111827);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(10px) scale(.98);
+  animation: modalIn .3s ease-out forwards;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes modalIn {
+  to {
+    transform: translateY(0) scale(1)
+  }
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.modal-subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+body.light .modal-inner {
+  background: var(--light-panel);
+  border-color: transparent;
+  box-shadow: var(--light-card-shadow);
+}
+
+body.light .modal-title {
+  color: var(--light-text-primary);
+}
+
+body.light .modal-subtitle {
+  color: var(--light-text-muted);
+}
+
+.code-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 12px;
+}
+
+.code-pill {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  flex-grow: 1;
+  text-align: center;
+  font-family: monospace;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.light .code-pill {
+  background: var(--light-input-bg);
+  border-color: var(--light-input-border);
+  color: var(--light-text-primary);
+}
+
+.small-btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+
+.small-btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+.small-btn.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--strong-muted-text);
+  border: 1px solid var(--border-color);
+}
+
+body.light .small-btn.secondary {
+  background: var(--light-input-bg);
+  color: var(--light-text-muted);
+  border-color: var(--light-input-border);
+}
+
+.small-btn:hover {
+  filter: brightness(1.1);
+}
+
+.small-btn:active {
+  transform: scale(0.98);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Progress bar container (initially hidden) */
+.progress-container {
+  margin-top: 20px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  overflow: hidden;
+  display: none;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width .2s linear;
+}
+
+.progress-percent {
+  display: none;
+  /* Percent text is typically handled by JS in a separate element/toast */
+}
+
+/* Legacy message display area (now largely superseded by Toastify in main.js) */
+.upload-message {
+  margin-top: 20px;
+  padding: 12px 15px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: none;
+  text-align: center;
+}
+
+.upload-message.error {
+  display: block;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.upload-message.success {
+  display: block;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.upload-message.info {
+  display: block;
+  background-color: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+body.light .upload-message.error {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #ef4444;
+}
+
+body.light .upload-message.success {
+  background-color: #f0fdfa;
+  border-color: #a7f3d0;
+  color: #10b981;
+}
+
+body.light .upload-message.info {
+  background-color: #f0f9ff;
+  border-color: #bae6fd;
+  color: #0ea5e9;
+}

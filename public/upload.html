@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SwiftShare | Upload File</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html" class="home-btn">Home</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="theme-toggle">
+                <input type="checkbox" id="themeSwitch" />
+                <label for="themeSwitch" class="toggle-label"><span class="ball"></span></label>
+                <p id="themeText">Turn On Light Mode</p>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="upload-section">
+            <div class="upload-container">
+                <div class="upload-left">
+                    <h2>Upload Your File</h2>
+                    <p>Drag &amp; drop file(s) here or click to select. After selecting you can set password, expiry and
+                        max downloads.</p>
+
+                    <form id="uploadForm" enctype="multipart/form-data" autocomplete="off">
+
+                        <div id="dropZone" class="drop-zone" role="button" tabindex="0">
+                            <p id="dropText"><span class="muted">📁</span> Drag &amp; Drop Your File Here <strong
+                                    style="color:#60a5fa;"></strong></p>
+
+                            <input type="file" id="fileInput" name="file" multiple />
+                        </div>
+
+                        <div id="extraOptions" style="display:none;">
+                            <label class="input-label">Set Password (optional)</label>
+                            <input type="password" id="password" name="password"
+                                placeholder="Enter optional password" />
+
+                            <div class="field-row">
+                                <div style="flex:1;">
+                                    <label class="input-label">Max downloads</label>
+                                    <select name="maxDownloads" id="maxDownloads">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <div style="flex:1;">
+                                    <label class="input-label">File expires in</label>
+                                    <select name="expiryHours" id="expiryHours">
+                                        <option value="1" selected>1 hour</option>
+                                        <option value="6">6 hours</option>
+                                        <option value="12">12 hours</option>
+                                        <option value="24">24 hours</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-container" aria-hidden="true" style="display:none;">
+                            <div class="progress-bar" id="progressBar"></div>
+                            <div class="progress-percent" aria-hidden="true"></div>
+                        </div>
+
+                        <div class="upload-action">
+                            <button type="button" id="uploadBtn" class="btn primary-btn cta-btn">Select File to
+                                Send</button>
+                        </div>
+                    </form>
+
+                    <div id="uploadMessage" class="upload-message" aria-live="polite"></div>
+                </div>
+
+                <div class="upload-right">
+                    <h3>Simple, private file sharing</h3>
+                    <p>SwiftShare lets you send files securely with optional passwords and auto-expiry links. Files
+                        delete after download, share confidently.</p>
+
+                    <ul>
+                        <li>No account required</li>
+                        <li>Optional password protection</li>
+                        <li>Auto-expiry and max-downloads control</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="howto.html">How to Use</a>
+            <a href="about.html">About</a>
+            <a href="developer.html">Developer</a>
+            <a href="security.html">Security</a>
+        </div>
+        <p>© 2025 SwiftShare. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/main.js"></script>
+</body>
+
+</html>

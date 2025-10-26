@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SwiftShare | Security</title>
+
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="index.html" class="home-btn">Home</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="theme-toggle">
+                <input type="checkbox" id="themeSwitch" />
+                <label for="themeSwitch" class="toggle-label"><span class="ball"></span></label>
+                <p id="themeText">Turn On Light Mode</p>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="info-section">
+            <div class="info-page-container">
+
+                <h1>Our Approach to File Security</h1>
+
+                <p>At SwiftShare, we focus on <b>access control</b> and <b>data minimization</b> to ensure your files
+                    are
+                    shared privately and reliably. Our key security measures ensure that only the intended recipient,
+                    with the correct code and optional password, can access the file before it is permanently deleted.
+                </p>
+
+                <h2>Secure Transmission and Access Control</h2>
+
+                <h3>1. Secure Transmission (HTTPS)</h3>
+                <p>All data exchanged between your browser and the SwiftShare server—including the file itself, the
+                    optional password, and the download code—is secured using <b>SSL/TLS (HTTPS)</b>. This standard
+                    internet security protocol creates an encrypted tunnel to prevent eavesdropping while the data is in
+                    transit.</p>
+
+                <h3>2. Unique Access Code</h3>
+                <p>Every upload is assigned a <b>unique, 8-character code</b> (e.g., `1234-ABCD`). This code is the only
+                    key to access the file's download page. Without this code, the file cannot be located on our system.
+                </p>
+
+                <h3>3. Optional Password Protection</h3>
+                <p>For an extra layer of security, you can set an <b>optional password</b> during the upload process.
+                    When
+                    a file is password-protected, the recipient must provide <b>both</b> the correct 8-character code
+                    <b>and</b> the password to initiate the download.
+                </p>
+
+                <h2>Data Minimization and Deletion Policy</h2>
+                <p>Our most important privacy feature is our commitment to <b>not permanently storing your data</b>.
+                    Once
+                    the share purpose is served, the file is automatically and immediately deleted.</p>
+
+                <ul>
+                    <li><strong><b>Deletion by Expiration : </b></strong> You set an expiration time (e.g., 1 hour, 24
+                        hours).
+                        Once this time limit is reached, your file is <b>permanently and irretrievably deleted</b> from
+                        our
+                        server storage.</li>
+                    <li><strong><b>Deletion by Download Limit : </b></strong> You can set a maximum download count
+                        (e.g., 1
+                        download, 5 downloads). When the file has been downloaded that many times, it is <b>permanently
+                            deleted</b>, regardless of the expiration time.</li>
+                    <li><strong><b>No File Backup : </b></strong> We do not keep backups of expired or deleted files.
+                        Once a file
+                        is removed, it is gone for good.</li>
+                </ul>
+
+                <h2>Privacy Policy Highlights</h2>
+                <ul>
+                    <li><strong><b>No Accounts : </b></strong> We never ask for, collect, or store personal identifying
+                        information like names or email addresses.</li>
+                    <li><strong><b>No File Scanning : </b></strong> We do not inspect or monitor the contents of the
+                        files you
+                        share.</li>
+                </ul>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="howto.html">How to Use</a>
+            <a href="about.html">About</a>
+            <a href="developer.html">Developer</a>
+            <a href="security.html">Security</a>
+        </div>
+        <p>© 2025 SwiftShare. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/main.js"></script>
+</body>
+
+</html>
