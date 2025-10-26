@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 formData.append('isOneTime', 'on');
 
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/upload");
+            xhr.open("POST", "https://swiftshare-tn4g.onrender.com/upload");
 
             // Progress event listener
             xhr.upload.addEventListener("progress", (e) => {
@@ -527,7 +527,7 @@ Shared via *SwiftShare*`;
 
             try {
                 // First, check the file status on the server
-                const res = await fetch(`/download`, {
+                const res = await fetch(`https://swiftshare-tn4g.onrender.com/download`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ code, password })
@@ -544,7 +544,7 @@ Shared via *SwiftShare*`;
                 if (res.status === 200) {
                     // Success: File verified, redirect to start the download stream
                     showDownloadMessage(`✅ ${resData.message}`, "success");
-                    window.location.assign(`/download-stream?code=${code}`);
+                    window.location.assign(`https://swiftshare-tn4g.onrender.com/download-stream?code=${code}`);
                 }
                 else if (res.status === 401) {
                     // Password required or incorrect
