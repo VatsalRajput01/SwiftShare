@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import archiver from "archiver";
 import cron from "node-cron";
-
+import cors from 'cors';
 
 // --- PATH SETUP ---
 // Define __filename and __dirname for module compatibility
@@ -51,6 +51,7 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 }
 
 // --- MIDDLEWARE SETUP ---
+app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 // Set body limits high for large file uploads
 app.use(express.json({ limit: '1024mb' }));
