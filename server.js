@@ -9,6 +9,7 @@ import bcrypt from "bcrypt";
 import archiver from "archiver";
 import cron from "node-cron";
 import cors from 'cors';
+import 'dotenv/config';
 
 // --- PATH SETUP ---
 // Define __filename and __dirname for module compatibility
@@ -25,12 +26,12 @@ const DATA_FILE = path.join(__dirname, 'file_metadata.json');
 
 // NOTE: Your specific R2 configuration keys
 const R2_BUCKET_NAME = "swiftshare-files";
-const R2_ACCOUNT_ID = "f81b65d6c6a4e3c70c677d260428ac76";
-const R2_ACCESS_KEY_ID = "8df42c4e2b7272458bca11aba07bb215";
-const R2_SECRET_ACCESS_KEY = "f572b3e497dccad827bc212f129ec2d92f06abdd5e6d8eabfea12fd976866d62";
+const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
+const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
+const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
 
 // Configure S3 Client for Cloudflare R2
-const R2_ENDPOINT = `https://f81b65d6c6a4e3c70c677d260428ac76.r2.cloudflarestorage.com`;
+const R2_ENDPOINT = `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
 
 const s3 = new S3Client({
     // R2 uses the 'auto' region for its endpoint configuration
@@ -51,7 +52,7 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 }
 
 // --- MIDDLEWARE SETUP ---
-app.use(cors());
+app.use(cors()); // Enable CORS for all routes
 app.use(express.static(path.join(__dirname, "public")));
 // Set body limits high for large file uploads
 app.use(express.json({ limit: '1024mb' }));
