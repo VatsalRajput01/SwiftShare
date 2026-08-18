@@ -420,6 +420,11 @@ app.get("/download-stream", async (req, res) => {
     }
 });
 
+// --- PING ROUTE ---
+app.get("/ping", (req, res) => {
+    res.status(200).send("OK");
+});
+
 
 // Home route: Serves the main application page
 app.get("/", (req, res) => {
